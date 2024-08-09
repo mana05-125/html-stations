@@ -36,11 +36,11 @@ function buildFullName(data) {
 //  });
 //});  =userList.map(user => `${user.family_name} ${user.first_name}`) にしてfunction buildFullName... が無いときは単にフルネームの文字列を返してるからこのコードになる
 
-getData().then((users) => {
-  const resultList = document.getElementById("result");
-  users.forEach((user) => {
-    const listItem = document.createElement("li");
-    listItem.textContent = user.full_name;
-    resultList.appendChild(listItem);
-  });
-});
+//getData().then((users) => {
+//  const resultList = document.getElementById("result");
+//  users.forEach((user) => {
+//    const listItem = document.createElement("li");
+//    listItem.textContent = user.full_name;
+//    resultList.appendChild(listItem);
+//  });
+//});
