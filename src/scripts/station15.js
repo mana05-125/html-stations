@@ -7,14 +7,15 @@ async function getData() {
     { id: 2, first_name: '太郎', family_name: '山田', affiliation: 'HogeHoge大学', is_student: true }
   ];
 
-  const result = await test()
-  return result
+  const result = await test(userList);
+  return result;
 }
 
 function test(userList) {
   return new Promise((resolve) => {
     setTimeout(() => {
-      const fullNames = userList.map(buildFullName);
+      // userList からフルネームを作成して返す
+      const fullNames = userList.map(buildFullName); // =userList.map(user => `${user.family_name} ${user.first_name}`)
       resolve(fullNames);
     }, 3000);
   });
@@ -26,4 +27,20 @@ function buildFullName(data) {
   return data;
 }
 
+//getData().then((fullNames) => {
+//  const resultList = document.getElementById("result");
+//  fullNames.forEach((name) => {
+//    const listItem = document.createElement("li");
+//    listItem.textContent = name;
+//    resultList.appendChild(listItem);
+//  });
+//});  =userList.map(user => `${user.family_name} ${user.first_name}`) にしてfunction buildFullName... が無いときは単にフルネームの文字列を返してるからこのコードになる
 
+getData().then((users) => {
+  const resultList = document.getElementById("result");
+  users.forEach((user) => {
+    const listItem = document.createElement("li");
+    listItem.textContent = user.full_name;
+    resultList.appendChild(listItem);
+  });
+});
